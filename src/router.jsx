@@ -7,10 +7,12 @@ import {
 import Menu from './Screens/Menu';
 import NotFound from './Screens/NotFound';
 
+import { ROUTES } from './contants';
+
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Menu} />
+      <Route exact path={ROUTES.MENU} component={Menu} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>

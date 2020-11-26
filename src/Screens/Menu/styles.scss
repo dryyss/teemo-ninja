@@ -1,0 +1,33 @@
+@import "./../../palette.scss";
+
+.container {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .frame {
+    width: 50%;
+    height: 50%;
+    background: $facade;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $border;
+    border-bottom: 5px solid $border;
+
+    a {
+      text-decoration: none;
+      width: 30%;
+      background-color: rgba(255, 255, 255, 0.241);
+      text-align: center;
+      border-radius: 5px;
+      color: $text-dark;
+
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+}
