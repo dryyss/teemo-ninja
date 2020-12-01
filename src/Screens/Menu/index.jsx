@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '../../contants';
+
 import './styles.scss';
 
-const Menu = () => (
+const MenuScreen = () => (
   <div className="container">
     <div className="frame">
       <Link to={ROUTES.GAME}>
@@ -13,4 +14,4 @@ const Menu = () => (
   </div>
 );
 
-export default Menu;
+export default MenuScreen;
