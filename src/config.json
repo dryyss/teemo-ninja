@@ -1,5 +1,5 @@
 {
-    "stages": 4,
-    "levels": 20,
-    "nbMonster": 20
+  "stages": 8,
+  "levels": 8,
+  "nbMonster": 20
 }

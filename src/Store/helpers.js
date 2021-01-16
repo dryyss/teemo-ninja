@@ -1,30 +1,33 @@
 import config from '../config.json';
 
 export function generateStages() {
-  const stagesSize = new Array(config.stages).fill(null);
-  const LevelsSize = new Array(config.levels).fill(null);
+  const StagesSize = new Array(config.stages + 1).fill(null);
+  const LevelsSize = new Array(config.levels + 1).fill(null);
 
-  let count = 1;
-  return stagesSize.map((_, i) => {
-    if (i === 0) {
+  let count = 0;
+  return StagesSize.reduce((accStage, _, i) => {
+    if (i === 1) {
+      count += 1;
       return {
-        [`stage-${i + 1}`]: {
-          [`level-${i + 1}`]: {
+        [`stage-${i}`]: {
+          [`level-${i}`]: {
             nbMonsters: 1,
           },
         },
       };
     }
 
-    const levels = LevelsSize.map((value, j) => ({
-      [`level-${count + j + 1}`]: {
+    const levels = LevelsSize.reduce((accLevel, __, j) => ({
+      ...accLevel,
+      [`level-${count + j}`]: {
         nbMonsters: config.nbMonster,
       },
     }));
-    count += 20;
+    count += config.levels;
 
     return {
-      [`stage-${i + 1}`]: {
+      ...accStage,
+      [`stage-${i}`]: {
         ...levels,
       },
     };
