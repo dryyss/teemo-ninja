@@ -2,15 +2,17 @@
 
 .container {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: $bg;
 
   .above,
   .below {
     height: 50%;
-    width: 100%;
+    width: 50vw;
     position: relative;
   }
 }

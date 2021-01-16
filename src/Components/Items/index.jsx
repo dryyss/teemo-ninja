@@ -9,8 +9,8 @@ import './styles.scss';
 
 const Items = () => {
   const dispatch = useDispatch();
-  // const items = useSelector(getItems);
   const stages = useSelector(getStages);
+  // const items = useSelector(getItems);
   console.log('=> ', stages);
 
   useEffect(() => {
