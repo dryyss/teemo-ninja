@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import Items from '../../Components/Items';
 import Stages from '../../Components/Stages';
 
-import { initStagesGame } from '../../Store/actions/Stages';
+import { generateWorldGame } from '../../Store/actions/World';
 
 import './styles.scss';
 
@@ -12,7 +12,7 @@ const InGameScreen = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initStagesGame());
+    dispatch(generateWorldGame());
   });
 
   return (

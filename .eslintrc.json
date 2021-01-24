@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["airbnb", "airbnb/hooks"],
+  "rules": {
+    "linebreak-style": ["error", "windows"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": false
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "operator-linebreak": "off",
+    "implicit-arrow-linebreak": "off",
+    "array-callback-return": "error",
+    "global-require": 0,
+    "no-unused-vars": "off"
+  }
+}

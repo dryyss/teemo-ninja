@@ -3,25 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { generateItemsByLevel } from '../../Store/actions/Items';
 // import { getItems } from '../../Store/selectors/Items';
-import { getStages } from '../../Store/selectors/Stages';
+import { getWorld } from '../../Store/selectors/World';
 
 import './styles.scss';
 
 const Items = () => {
   const dispatch = useDispatch();
-  const stages = useSelector(getStages);
+  const stages = useSelector(getWorld);
   // const items = useSelector(getItems);
-  console.log('=> ', stages);
 
   useEffect(() => {
     dispatch(generateItemsByLevel());
   }, [dispatch]);
 
-  return (
-    <div className="items">
-      items here
-    </div>
-  );
+  return <div className="items">items here</div>;
 };
 
 export default Items;

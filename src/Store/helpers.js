@@ -1,6 +1,6 @@
 import config from '../config.json';
 
-export function generateStages() {
+export function generateWorld() {
   const StagesSize = new Array(config.stages + 1).fill(null);
   const LevelsSize = new Array(config.levels + 1).fill(null);
 

@@ -5,6 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "gsap": "^3.6.0",
+    "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -20,30 +21,14 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "node": true
-    },
-    "extends": [
-      "airbnb",
-      "airbnb/hooks"
-    ],
-    "rules": {
-      "linebreak-style": [
-        "error",
-        "windows"
-      ],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": true
-        }
-      ],
-      "import/prefer-default-export": "off",
-      "array-callback-return": "error",
-      "global-require": 0
-    }
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "2.2.0"
   },
   "browserslist": {
     "production": [
@@ -56,13 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.0.0",
-    "prettier": "2.2.0"
   }
 }
