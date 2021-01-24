@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Items from '../../Components/Items';
-import Stages from '../../Components/Stages';
+import World from '../../Components/World';
 
 import { generateWorldGame } from '../../Store/actions/World';
 
@@ -18,7 +18,7 @@ const InGameScreen = () => {
   return (
     <div className="container">
       <div className="above">
-        <Stages />
+        <World />
       </div>
       <div className="below">
         <Items />

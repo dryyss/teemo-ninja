@@ -4,7 +4,7 @@ import {
   UPGRADE_STAGE,
 } from '../../../contants';
 
-const initialState = {
+export const initialState = {
   currentStage: 'stage-1', // the generate stage start at 1
   currentLevel: 'level-1', // the generate level start at 1
   world: {},

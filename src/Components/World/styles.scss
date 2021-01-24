@@ -1,0 +1,26 @@
+@import './../../palette.scss';
+
+.stage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  color: $text-dark;
+
+  .player-image {
+    height: 130px;
+    width: 50px;
+    background-position: center;
+    background-size: cover;
+    transform: scaleX(-1);
+    transform: translateY(1);
+    position: absolute;
+    left: 10px;
+    bottom: 10%;
+  }
+  .stage-image {
+    // Warning: This css work with 1 image size
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+  }
+}
