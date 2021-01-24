@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
+import './styles.scss';
+
 const Player = () => {
   const refPlayer = useRef(null);
 
