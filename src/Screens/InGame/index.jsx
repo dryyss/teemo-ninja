@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import Craft from '../../Components/Craft';
 import Items from '../../Components/Items';
 import World from '../../Components/World';
 
@@ -22,6 +23,7 @@ const InGameScreen = () => {
       </div>
       <div className="below">
         <Items />
+        <Craft />
       </div>
     </div>
   );

@@ -1,22 +1,57 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { TimelineLite } from 'gsap';
 
-import { generateItemsByLevel } from '../../Store/actions/Items';
-// import { getItems } from '../../Store/selectors/Items';
-import { getWorld } from '../../Store/selectors/World';
+import { getWeapons } from '../../Store/selectors/Items';
 
 import './styles.scss';
 
+const tl = new TimelineLite();
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 const Items = () => {
-  const dispatch = useDispatch();
-  const stages = useSelector(getWorld);
-  // const items = useSelector(getItems);
+  const refItems = useRef(null);
+  const weapons = useSelector(getWeapons);
 
   useEffect(() => {
-    dispatch(generateItemsByLevel());
-  }, [dispatch]);
+    if (refItems.current) {
+      tl.fromTo(
+        [refItems.current],
+        {
+          transform: `matrix3d(
+            1,0,0,0,
+            0,1,0,0,
+            0,0,1,0,
+            500,200,0,1
+          )`,
+        },
+        {
+          transform: `matrix3d(
+            1,0,0,0,
+            0,1,0,0,
+            0,0,1,0,
+            ${getRandomArbitrary(20, 450)},${getRandomArbitrary(20, 150)},0,1
+          )`,
+          duration: 0.8,
+        },
+      );
+    }
+  });
 
-  return <div className="items">items here</div>;
+  return (
+    <div className="items">
+      {weapons.map((img) => (
+        <div
+          className="weapon-image"
+          style={{ backgroundImage: `url(./images/weapons/${img}.png)` }}
+          ref={refItems}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default Items;

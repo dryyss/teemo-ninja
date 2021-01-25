@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TimelineLite } from 'gsap';
 
 import _findLastKey from 'lodash/findLastKey';
 
@@ -12,9 +13,9 @@ import {
 
 import Player from '../Player';
 
-import { tl } from '../../helpers';
-
 import './styles.scss';
+
+const tl = new TimelineLite();
 
 const Stage = ({ animationFinish }) => {
   const refStage = useRef(null);

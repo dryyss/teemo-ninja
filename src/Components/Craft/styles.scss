@@ -1,0 +1,62 @@
+@import './../../palette.scss';
+
+.craft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+  height: auto;
+  background-color: $bg;
+  position: absolute;
+  color: $text-light;
+  bottom: 0;
+  right: 0;
+  transition: 0.2s;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $text-dark;
+    transition: 0.2s;
+  }
+  &:active {
+    background-color: $border;
+  }
+
+  & > div {
+    padding: 0 5px;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      padding-right: 10px;
+    }
+  }
+
+  .current-craft {
+    font-size: 20px;
+  }
+
+  .cooldown-bar {
+    padding: 0;
+    background-color: #3850fb00;
+    width: 0%;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+
+    &.animation {
+      background-color: #3850fb6e;
+      transition: 1s;
+      transition-delay: 0.1s;
+      width: 100%;
+    }
+  }
+}

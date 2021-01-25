@@ -1,6 +1,6 @@
-import { GENERATE_ITEMS_BY_LEVEL } from '../../../contants';
+import { ADD_WEAPON } from '../../../contants';
 
-export const generateItemsByLevel = () => ({
-  type: GENERATE_ITEMS_BY_LEVEL,
-  payload: [],
+export const addWeapon = () => ({
+  type: ADD_WEAPON,
+  payload: 'level-1',
 });
