@@ -1,6 +1,10 @@
-import { ADD_WEAPON } from '../../../contants';
+import { ADD_WEAPON, MERGE_WEAPONS } from '../../../contants';
 
 export const addWeapon = () => ({
   type: ADD_WEAPON,
-  payload: 'level-1',
+});
+
+export const mergeWeapons = (payload) => ({
+  type: MERGE_WEAPONS,
+  payload,
 });

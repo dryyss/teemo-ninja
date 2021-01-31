@@ -23,9 +23,6 @@ const Craft = () => {
   const [garbageWeapon, setGarbageWeapon] = useState(0);
 
   const handleAddWeapon = () => {
-    if (weapons.length + 1 === bagSize) {
-      refCraft.current.style.backgroundColor = '#ff000040';
-    }
     if (garbageWeapon >= 1 && weapons.length < bagSize) {
       dispatch(addWeapon());
       setGarbageWeapon(garbageWeapon - 1);
@@ -40,6 +37,9 @@ const Craft = () => {
 
   useEffect(() => {
     if (refCooldownBar.current) {
+      refCraft.current.style.backgroundColor =
+        weapons.length === bagSize ? '#ff000040' : 'transparent';
+
       if (garbageWeapon < craftMax) {
         refCooldownBar.current.classList.remove('animation');
         setTimeout(() => {
@@ -49,13 +49,13 @@ const Craft = () => {
         refCooldownBar.current.classList.remove('animation');
       }
     }
-  }, [garbageWeapon, craftMax, weapons]);
+  }, [garbageWeapon, craftMax, weapons, bagSize]);
 
   return (
     <div className="craft" ref={refCraft} onMouseUp={handleAddWeapon}>
       <div className="cooldown-bar animation" ref={refCooldownBar} />
       <div className="title">
-        <img src="./images/craft/icon.png" alt="" />
+        <img src="./images/craft/icon.png" alt="Mushroom craft icon" />
         Craft
       </div>
       <div className="current-craft">

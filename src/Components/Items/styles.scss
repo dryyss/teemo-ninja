@@ -15,5 +15,10 @@
     height: 50px;
     position: absolute;
     background-size: cover;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
   }
 }
