@@ -1,10 +1,8 @@
 .player-image {
-  height: 130px;
+  height: 80px;
   width: 50px;
   background-position: center;
-  background-size: cover;
-  transform: scaleX(-1);
-  transform: translateY(1);
+  background-size: contain;
   position: absolute;
   left: 10px;
   bottom: 10%;

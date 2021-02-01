@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TimelineLite } from 'gsap';
 
@@ -21,6 +21,7 @@ const Items = () => {
 
   useEffect(() => {
     if (refItems.current) {
+      console.log('w', weapons);
       tl.fromTo(
         [refItems.current],
         {

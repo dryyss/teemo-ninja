@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { TimelineLite } from 'gsap';
 
 import './styles.scss';
 

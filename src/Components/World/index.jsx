@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TimelineLite } from 'gsap';
 
@@ -17,7 +17,7 @@ import './styles.scss';
 
 const tl = new TimelineLite();
 
-const Stage = ({ animationFinish }) => {
+const Stage = ({ animationFinished }) => {
   const refStage = useRef(null);
   const currentStage = useSelector(getCurrentStage);
 
@@ -27,7 +27,7 @@ const Stage = ({ animationFinish }) => {
 
       tl.fromTo(
         [refStage.current],
-        { opacity: 0, onStart: () => animationFinish(false) },
+        { opacity: 0, onStart: () => animationFinished(false) },
         { opacity: 1, duration: 2 },
       ).fromTo(
         [refStage.current],
@@ -36,7 +36,7 @@ const Stage = ({ animationFinish }) => {
           duration: 5,
           backgroundPosition: '100% 0',
           ease: 'none',
-          onComplete: () => animationFinish(true),
+          onComplete: () => animationFinished(true),
         },
       );
     }
@@ -50,8 +50,8 @@ const World = () => {
   const stages = useSelector(getStages);
   const currentLevel = useSelector(getCurrentLevel);
 
-  const handleAnimationFinished = (animationFinish) => {
-    if (animationFinish) {
+  const handleAnimationFinished = (animationFinished) => {
+    if (animationFinished) {
       if (currentLevel === _findLastKey(stages)) {
         dispatch(upgradeStage());
       }
@@ -61,7 +61,7 @@ const World = () => {
 
   return (
     <div className="stage">
-      <Stage animationFinish={handleAnimationFinished} />
+      <Stage animationFinished={handleAnimationFinished} />
       <Player />
     </div>
   );
