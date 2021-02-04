@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+/* eslint-disable prefer-template */
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TimelineLite } from 'gsap';
 
@@ -12,16 +13,12 @@ const tl = new TimelineLite();
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
-
-const Items = () => {
-  const refItems = useRef(null);
+const Weapon = ({ id }) => {
   const dispatch = useDispatch();
-  const weapons = useSelector(getWeapons);
-  const bagSize = useSelector(getBagSize);
+  const refItems = useRef(null);
 
   useEffect(() => {
-    if (refItems.current) {
-      console.log('w', weapons);
+    if (refItems.current && id.indexOf('level-1') !== -1) {
       tl.fromTo(
         [refItems.current],
         {
@@ -43,7 +40,24 @@ const Items = () => {
         },
       );
     }
-  });
+    if (id.indexOf(':') !== -1) {
+      const [x, y] = id.split('|')[1].split(':');
+
+      tl.fromTo(
+        [refItems.current],
+        {
+          transform: `translate(${x}px, ${y}px)`,
+          backgroundImage: `url(./images/effects/smoke.gif?t=${new Date().valueOf()})`,
+        },
+        {
+          duration: 0.75,
+        },
+      ).to([refItems.current], {
+        backgroundImage: `url(./images/weapons/${id.slice(0, 7)}.png)`,
+        duration: 0.1,
+      });
+    }
+  }, [id]);
 
   const dragStartHandler = (event) => {
     event.dataTransfer.setData('text/plain', event.target.id);
@@ -57,7 +71,17 @@ const Items = () => {
       event.target.id !== dt &&
       event.target.id.slice(0, 7) === dt.slice(0, 7)
     ) {
-      dispatch(mergeWeapons([dt, event.target.id]));
+      const { e: x, f: y } = new WebKitCSSMatrix(event.target.style.transform); // eslint-disable-line
+      dispatch(
+        mergeWeapons({
+          item1: dt,
+          item2: event.target.id,
+          pos: {
+            x: parseInt(Math.abs(x), 10),
+            y: parseInt(Math.abs(y), 10),
+          },
+        }),
+      );
     }
     event.dataTransfer.clearData();
   };
@@ -65,23 +89,34 @@ const Items = () => {
   const dragOverHandler = (event) => event.preventDefault();
 
   return (
+    <div
+      id={id}
+      key={id}
+      ref={refItems}
+      draggable="true"
+      onDragStart={dragStartHandler}
+      onDrop={dropHandler}
+      onDragOver={dragOverHandler}
+      className="weapon-image"
+      style={{
+        backgroundImage: `url(./images/weapons/${id.slice(0, 7)}.png)`,
+      }}
+    />
+  );
+};
+
+const Items = () => {
+  const weapons = useSelector(getWeapons);
+  const bagSize = useSelector(getBagSize);
+  const weaponMemo = useMemo(
+    () => weapons.map((weapon) => <Weapon key={weapon} id={weapon} />),
+    [weapons],
+  );
+
+  return (
     <div className="items">
       Bag {weapons.length} / {bagSize}
-      {weapons.map((weapon) => (
-        <div
-          key={weapon}
-          draggable="true"
-          onDragStart={dragStartHandler}
-          onDrop={dropHandler}
-          onDragOver={dragOverHandler}
-          className="weapon-image"
-          id={weapon}
-          style={{
-            backgroundImage: `url(./images/weapons/${weapon.slice(0, 7)}.png)`,
-          }}
-          ref={refItems}
-        />
-      ))}
+      {weaponMemo}
     </div>
   );
 };
