@@ -1,5 +1,5 @@
 /* eslint-disable prefer-template */
-import React, { useEffect, useMemo, useRef } from 'react';
+import React, { useEffect, useMemo, useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TimelineLite } from 'gsap';
 
@@ -26,7 +26,7 @@ const Weapon = ({ id }) => {
             1,0,0,0,
             0,1,0,0,
             0,0,1,0,
-            500,200,0,1
+            500,180,0,1
           )`,
         },
         {
@@ -34,7 +34,7 @@ const Weapon = ({ id }) => {
             1,0,0,0,
             0,1,0,0,
             0,0,1,0,
-            ${getRandomArbitrary(20, 450)},${getRandomArbitrary(20, 150)},0,1
+            ${getRandomArbitrary(20, 450)},${getRandomArbitrary(0, 120)},0,1
           )`,
           duration: 0.5,
         },

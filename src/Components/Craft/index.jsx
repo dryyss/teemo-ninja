@@ -38,7 +38,7 @@ const Craft = () => {
   useEffect(() => {
     if (refCooldownBar.current) {
       refCraft.current.style.backgroundColor =
-        weapons.length === bagSize ? '#ff000040' : 'transparent';
+        weapons.length === bagSize ? '#ff000040' : '#141e22';
 
       if (garbageWeapon < craftMax) {
         refCooldownBar.current.classList.remove('animation');
