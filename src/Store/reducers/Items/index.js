@@ -5,6 +5,7 @@ const initialState = {
   craftMax: 5,
   bagSize: 10,
   weapons: [],
+  mouse: {},
 };
 
 export const ItemsReducer = (state = initialState, action) => {
