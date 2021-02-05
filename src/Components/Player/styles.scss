@@ -7,3 +7,22 @@
   left: 10px;
   bottom: 10%;
 }
+
+.player-weapon {
+  width: 50px;
+  height: 50px;
+  animation: rotating 0.5s infinite linear;
+  left: 70px;
+  bottom: 15%;
+  position: absolute;
+  filter: drop-shadow(0 0 8px #07bd1e);
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
