@@ -6,13 +6,13 @@ import _orderBy from 'lodash/orderBy';
 import _debounce from 'lodash/debounce';
 
 import { getWeapons } from '../../Store/selectors/Items';
-import { useCooldown } from '../../Hooks/useCooldown';
+import { useCooldown } from '../../Hooks';
 
 import './styles.scss';
 
 const tl = new TimelineLite({ repeat: -1, repeatDelay: 2 });
-
 const CD_DELAY = 2000;
+
 const Player = () => {
   const refPlayer = useRef(null);
   const refWeapon = useRef(null);

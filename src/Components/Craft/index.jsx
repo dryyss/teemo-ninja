@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TimelineLite } from 'gsap';
 import _debounce from 'lodash/debounce';
 
-import { useInterval } from '../../Custom/Hooks';
+import { useInterval } from '../../Hooks';
 import { addWeapon } from '../../Store/actions/Items';
 import {
   getCraftMax,

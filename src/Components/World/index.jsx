@@ -17,9 +17,40 @@ import './styles.scss';
 
 const tl = new TimelineLite();
 
-const Stage = ({ animationFinished }) => {
+const InfoStage = ({ currentStage = null, currentLevel = null }) => (
+  <div
+    style={{
+      width: '40%',
+      margin: '0 auto',
+      borderTop: '20px solid white',
+      borderLeft: '30px solid transparent',
+      borderRight: '30px solid transparent',
+      position: 'absolute',
+      zIndex: 1,
+      top: 0,
+      right: 0,
+      left: 0,
+      height: 20,
+      filter: 'drop-shadow(0 0 2px black)',
+      boxSizing: 'border-box',
+    }}
+  >
+    <div
+      style={{
+        position: 'relative',
+        top: '-20px',
+        textAlign: 'center',
+        fontSize: 'small',
+        fontWeight: 'bold',
+      }}
+    >
+      {currentStage.replace('-', ': ')} {currentLevel.replace('-', ': ')}
+    </div>
+  </div>
+);
+
+const Stage = ({ animationFinished, currentStage }) => {
   const refStage = useRef(null);
-  const currentStage = useSelector(getCurrentStage);
 
   useEffect(() => {
     if (refStage.current && currentStage) {
@@ -48,6 +79,7 @@ const Stage = ({ animationFinished }) => {
 const World = () => {
   const dispatch = useDispatch();
   const stages = useSelector(getStages);
+  const currentStage = useSelector(getCurrentStage);
   const currentLevel = useSelector(getCurrentLevel);
 
   const handleAnimationFinished = (animationFinished) => {
@@ -61,7 +93,11 @@ const World = () => {
 
   return (
     <div className="stage">
-      <Stage animationFinished={handleAnimationFinished} />
+      <InfoStage currentStage={currentStage} currentLevel={currentLevel} />
+      <Stage
+        currentStage={currentStage}
+        animationFinished={handleAnimationFinished}
+      />
       <Player />
     </div>
   );
